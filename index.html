@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-esquiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/89e200cd6a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="header">
+	<div class="container">
+		<nav>
+			<img src="images/logo.png" class="logo">
+			<ul id="sidemenu">
+				<li><a href="#header">Home</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#services">Services</a></li>
+				<li><a href="#portfolio">Portfolio</a></li>
+				<li><a href="#contact">Contact</a></li>
+				<i class="fas fa-times" onclick="closemenu()"></i>
+			</ul>
+			<i class="fas fa-bars" onclick="openmenu()"></i>
+		</nav>
+		<div class="header-text">
+			<p>Science Computer Student</p>
+			<h1>Hi, <br><span class="mobile-br"></span>I'm <span>Noam<br></span><span class="mobile-br"></span>from <span class="mobile-br"></span>Paris!</h1>
+		</div>
+	</div>
+</div>	
+
+<!----------------about------------------>
+
+<div id="about">
+	<div class="container">
+		<div class="row">
+			<div class="about-col-1">
+				<img src="images/user 3.png">
+			</div>
+			<div class="about-col-2">
+				<h1 class="sub-title">About Me</h1>
+				<p class="description">Currently in my 2nd year of computer engineering at ECE Paris, I'm a serious, curious and responsible person. I know how to adapt to different situations and put a lot of effort into my work. I always enjoy discovering new methods and like working both on my own and as part of a team!</p>
+
+				<div class="tab-title">
+					<p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+					<p class="tab-links" onclick="opentab('education')">Education</p>
+					<p class="tab-links" onclick="opentab('experience')">Experience</p>
+				</div>
+				
+				<div class="tab-contents active-tab" id="skills">
+					<ul>
+						<li><span>UI/UX</span><br>Designing Web/App interfaces</li>
+						<li><span>Web Development</span><br>Web app Development</li>
+						<li><span>Modelisation 3d</span><br>3d creation on Blender and Unity</li>
+						<li><span>Data</span><br>Analysing and working on big data</li>
+						<li><span>AWS</span><br>Cloud fondations</li>
+					</ul>
+				</div>
+
+				<div class="tab-contents" id="education">
+					<ul>
+						<li><span>Bachelor in Computer Science (2023 - current)</span><br>ECE Engineering School, Paris, France</li>
+						<li><span>High School (2019 - 2023)</span><br>American High School Diploma (Academica) And French High School Diploma. Binational agreement Ministry of Education France / United States Department of Education<br>Distance learning with the University of Miami and physical courses for my French High School Diploma</li>
+						<li><span>Middle School (2015 - 2019)</span><br>Institut Notre-Dame, Bourg-la-Reine, France</li>
+						<li><span>Primary (2013 - 2015)</span><br>Lycée Jean-Renoir, Munich, Germany</li>
+						<li><span>Kindergarten and Primary (2009 - 2013)</span><br>British International School (King’s Oak), Bucarest, Romania</li>
+					</ul>
+				</div>
+
+				<div class="tab-contents" id="experience">
+					<ul>
+						<li><span>2024 (4 months)</span><br>Waiter in a 2 Michelin stars restaurant</li>
+						<li><span>2023 - 2024 (8 months)</span><br>Night-time Hotel Receptionist (4 stars hotel)</li>
+						<li><span>2023 (4 months)</span><br>Barman</li>
+						<li><span>2023 (6 months)</span><br>Waiter</li>
+						<li><span>2021 - 2022 (3 months)</span><br>Digital tools trainer and assistant (volunteer)</li>
+						<li><span>2021 (3 months)</span><br>internship on 3d, mapping and the world of multimedia shows and immersive scenography</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!---------------services---------------->
+
+<div id="services">
+	<div class="container">
+		<h1 class="sub-title">My Services</h1>
+		<div class="services-list">
+			<div>
+				<i class="fa-solid fa-code"></i>
+				<h2>Web Design</h2>
+				<p>I specialize in web design, with strong expertise in HTML, C, PHP, and Java, allowing me to create visually appealing functional websites. I enjoy working on creative and difficults projects.</p>
+			</div>
+			<div>
+				<i class="fa-solid fa-crop"></i>
+				<h2>UI/UX Design</h2>
+				<p>I am training on UI/UX development services, where I blend aesthetics with functionality to create intuitive and engaging user interfaces. I thrive on the challenge of transforming complex requirements into user-friendly solutions.</p>
+			</div>
+			<div>
+				<i class="fa-solid fa-cubes"></i>
+				<h2>Data Analyst</h2>
+				<p>I specialize in data analysis, using advanced tools and techniques to extract meaningful insights from complex datasets. With a strong foundation in statistical analysis, data visualization, and tools like Python, R, and SQL, I transform raw data into actionable strategies.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--------------portfolio------------->
+
+<div id="portfolio">
+	<div class="container">
+		<h1 class="sub-title">My Projects</h1>
+		<div class="work-list">
+			<div class="work">
+				<img src="images/work-4.png">
+				<div class="layer">
+					<h3>Purple Lab</h3>
+					<p>I created a complete <br>e-commerce website for CBD sales, featuring a fully functional database, PHP integration, and a visually appealing interface.</p>
+					<a href="https://drive.google.com/file/d/1x4OzY862zEgaXwHFnMrelaZfQEBv0ZL1/view?usp=drive_link" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
+				</div>
+			</div>
+			<div class="work">
+				<img src="images/work-5.png">
+				<div class="layer">
+					<h3>Code Campus</h3>
+					<p>I developed a web platform for teaching computer science, designed to centralize, organize, and manage courses, assignments, and student interactions.</p>
+					<a href="https://drive.google.com/file/d/1x4OzY862zEgaXwHFnMrelaZfQEBv0ZL1/view?usp=drive_link" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
+				</div>
+			</div>
+			<div class="work">
+				<img src="images/work-6.png">
+				<div class="layer">
+					<h3>TGV booking application</h3>
+					<p>I created a console application in C++ that allows users to book TGV tickets based on availability in the database.</p>
+					<a href="https://drive.google.com/file/d/1x4OzY862zEgaXwHFnMrelaZfQEBv0ZL1/view?usp=drive_link" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
+				</div>
+			</div>
+			<div class="work">
+				<img src="images/work-7.png">
+				<div class="layer">
+					<h3>Pac-Man</h3>
+					<p>I created a Pac-Man game using the Allegro library. This project allowed me to explore the development of a small video game and gain hands-on experience in game programming!</p>
+					<a href="https://drive.google.com/file/d/1x4OzY862zEgaXwHFnMrelaZfQEBv0ZL1/view?usp=drive_link" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
+				</div>
+			</div>
+			<div class="work">
+				<img src="images/work-8.png">
+				<div class="layer">
+					<h3>Event Reservation Website</h3>
+					<p>I created a website for a client that allows her to showcase her events and enables customers to book the ones they like! </p>
+					<a href="https://drive.google.com/file/d/1x4OzY862zEgaXwHFnMrelaZfQEBv0ZL1/view?usp=drive_link" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
+				</div>
+			</div>
+			<div class="work">
+				<img src="images/work-1.png">
+				<div class="layer">
+					<h3>Scrabble Game in C</h3>
+					<p>For school, I had to creat a Scrabble game entirely in C.<br>It was kind of a try as the C langage isn't usually adapted to code games!</p>
+					<a href="https://drive.google.com/file/d/1x4OzY862zEgaXwHFnMrelaZfQEBv0ZL1/view?usp=drive_link" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
+				</div>
+			</div>
+			<div class="work">
+				<img src="images/work-2.png">
+				<div class="layer">
+					<h3>Linux VM's network</h3>
+					<p>I created a simple network between two Linux VM's.<br>With a web server and client server on each machine and a remote connection using the SSH protocol!</p>
+					<a href="https://drive.google.com/file/d/1JaGb2MuhgpUMzqmm-ls91qzJSIkLCDI3/view?usp=drive_link" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
+				</div>
+			</div>
+			<div class="work">
+				<img src="images/work-3.png">
+				<div class="layer">
+					<h3>Solar Trott Project</h3>
+					<p>This was a semester long project abut creating an ecological way of transportation.<br>We imagined a futurist scooter equiped with solar panel, allowing you to recharge while cruising around!</p>
+					<a href="https://drive.google.com/drive/folders/16tOU5fKjSXrTXrJdsRaEGsKYnzThXmQM?usp=drive_link" target="_blank"><i class="fa-solid fa-up-right-from-square"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!---------contact----------->
+<br>
+<div id="contact">
+	<div class="container">
+		<div class="row">
+			<div class="contact-left">
+				<h1 class="sub-title">Contact Me</h1>
+				<p><i class="fa-solid fa-paper-plane"></i><a href="mailto:ljnoam@gmail.com">ljnoam@gmail.com</a></p>
+				<p><i class="fa-solid fa-square-phone"></i><a href="tel:+33768147840">07.68.14.78.40</a></p>
+				<div class="social-icons">
+					<a href="https://linkedin.com/in/noam-leclapart-jublot-6950a5178"><i class="fa-brands fa-linkedin"></i></a>
+				</div>
+				<a href="images/CV.pdf" download class="btn btn2">Download CV</a>
+			</div>
+			<div class="contact-right">
+				<form name="submit-to-google-sheet">
+					<input type="text" name="Name" placeholder="Your Name" required>
+					<input type="email" name="Email" placeholder="Your Email" required>
+					<textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
+					<button type="submit" class="btn btn2">Submit</button>
+				</form>
+				<span id="msg"></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+<script>
+	
+	var tablinks = document.getElementsByClassName('tab-links')
+	var tabcontents = document.getElementsByClassName('tab-contents')
+
+	function opentab(tabname){
+		for(tablink of tablinks){
+			tablink.classList.remove('active-link')
+		}
+		for(tabcontent of tabcontents){
+			tabcontent.classList.remove('active-tab')
+		}
+		event.currentTarget.classList.add("active-link");
+		document.getElementById(tabname).classList.add("active-tab")
+	}
+</script>
+
+<script>
+	
+	var sidemenu = document.getElementById("sidemenu");
+
+	function openmenu(){
+		sidemenu.style.right = "0";
+	}
+	function closemenu(){
+		sidemenu.style.right = "-200px";
+	}
+
+
+</script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxJtP-MzRW0-SnnEkEz06sCaB-wYbIou0EZ_IsMWAVxLMaimoLv3rejB-jAPnuPYD4_5g/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+      	msg.innerHTML = "Message sent successfully"
+      	setTimeout(function(){
+      		msg.innerHTML = ""
+      	}, 5000)
+      	form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+</body>
+</html>
