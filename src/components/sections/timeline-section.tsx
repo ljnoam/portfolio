@@ -1,9 +1,11 @@
+
 "use client";
 
 import { Section } from "@/components/section";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Briefcase, GraduationCap, Lightbulb, CodeXml } from "lucide-react"; // Using CodeXml as a general dev icon
+import { Briefcase, GraduationCap, Lightbulb, CodeXml } from "lucide-react"; 
 import type { LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface TimelineEvent {
   year: string;
