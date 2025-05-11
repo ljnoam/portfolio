@@ -5,6 +5,7 @@ import { Section } from "@/components/section";
 import { ArrowRight, Briefcase, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Typewriter } from 'react-simple-typewriter';
 
 export function HeroSection() {
   return (
@@ -20,27 +21,35 @@ export function HeroSection() {
       >
         Noam
       </motion.h1>
-      <motion.p
-        className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl"
+      <motion.div
+        className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl h-16 md:h-auto" // Fixed height for typewriter
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
       >
-        Étudiant en informatique & développeur web et data passionné par la création de solutions innovantes.
-      </motion.p>
+        <Typewriter
+            words={['Étudiant en informatique', 'Développeur web', 'Passionné de data']}
+            loop={0} // 0 means infinite loop
+            cursor
+            cursorStyle='_'
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={1500}
+        />
+      </motion.div>
       <motion.div
         className="flex flex-col sm:flex-row gap-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.6 }}
       >
-        <Button asChild size="lg" variant="default">
+        <Button asChild size="lg" variant="default" className="transition-transform hover:scale-105">
           <Link href="#projects">
             <Briefcase className="mr-2 h-5 w-5" />
             Voir mes projets
           </Link>
         </Button>
-        <Button asChild size="lg" variant="outline">
+        <Button asChild size="lg" variant="outline" className="transition-transform hover:scale-105">
           <Link href="#contact">
             <Mail className="mr-2 h-5 w-5" />
             Me contacter

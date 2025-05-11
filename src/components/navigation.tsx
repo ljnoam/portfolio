@@ -3,39 +3,38 @@
 
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Code2 } from "lucide-react";
+import { ThemeToggleButton } from "@/components/theme-toggle-button";
 
 const NAV_LINKS = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
+  { href: "#timeline", label: "Timeline" },
+  { href: "#tools", label: "Tools" },
+  { href: "#terminal", label: "Terminal" },
   { href: "#contact", label: "Contact" },
 ];
 
-const NAVBAR_HEIGHT = "4rem"; // Define navbar height as a CSS variable or const
+const NAVBAR_HEIGHT = "4rem"; 
 
 export function Navigation() {
   const [activeSection, setActiveSection] = useState<string>("");
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const navRef = useRef<HTMLElement>(null);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Navbar background effect on scroll
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-
-      // Active section highlighting
       let currentSection = "";
       NAV_LINKS.forEach((link) => {
         const sectionId = link.href.substring(1);
         const sectionElement = document.getElementById(sectionId);
         if (sectionElement) {
-          const navHeight = navRef.current?.offsetHeight || parseFloat(NAVBAR_HEIGHT) * 16; // Fallback to parsing rem
-          if (sectionElement.offsetTop - navHeight <= window.scrollY) {
+          const navHeight = navRef.current?.offsetHeight || parseFloat(NAVBAR_HEIGHT) * 16; 
+          // Adjust threshold to activate link slightly before section top hits navbar
+          const threshold = window.innerHeight * 0.4; 
+          if (sectionElement.getBoundingClientRect().top - navHeight < threshold) {
             currentSection = sectionId;
           }
         }
@@ -44,14 +43,11 @@ export function Navigation() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    // Set initial active section
-    handleScroll();
+    handleScroll(); 
 
-    // Set navbar height CSS variable
     if (navRef.current) {
         document.documentElement.style.setProperty('--navbar-height', `${navRef.current.offsetHeight}px`);
     }
-
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -62,16 +58,30 @@ export function Navigation() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out",
         "py-4",
-        "bg-transparent" // Always transparent
+        "bg-transparent backdrop-blur-md" 
       )}
       style={{ height: NAVBAR_HEIGHT }}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-full">
-        <Link href="#hero" className="flex items-center gap-2 text-xl font-bold text-primary hover:text-primary/80 transition-colors" aria-label="Go to top of page">
-          <Code2 size={28} />
+        <Link 
+          href="#hero" 
+          className="flex items-center gap-2 text-xl font-bold text-primary hover:text-primary/80 transition-colors" 
+          aria-label="Go to top of page"
+          onMouseEnter={() => setIsLogoHovered(true)}
+          onMouseLeave={() => setIsLogoHovered(false)}
+        >
+          <motion.div
+            animate={{ 
+              color: isLogoHovered ? "hsl(var(--accent))" : "hsl(var(--primary))",
+              scale: isLogoHovered ? 1.1 : 1,
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <Code2 size={28} />
+          </motion.div>
           <span>DevCard</span>
         </Link>
-        <ul className="flex items-center space-x-4 md:space-x-6">
+        <ul className="hidden md:flex items-center space-x-4 md:space-x-6">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <Link
@@ -88,6 +98,10 @@ export function Navigation() {
             </li>
           ))}
         </ul>
+        <div className="flex items-center gap-2">
+          <ThemeToggleButton />
+          {/* Mobile menu button can be added here if needed later */}
+        </div>
       </div>
     </nav>
   );

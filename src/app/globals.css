@@ -4,45 +4,33 @@
 
 @layer base {
   :root {
-    /* Dark Theme Variables as per user request */
+    /* Dark Theme Variables */
     --background: 212 45% 7%; /* #0D1117 */
     --foreground: 210 27% 95%; /* #E6EDF3 */
-
-    --card: 212 40% 10%; /* #10151D - slightly lighter than background */
-    --card-foreground: 210 27% 95%; /* #E6EDF3 */
-
-    --popover: 212 40% 10%; /* Consistent with card */
+    --card: 212 40% 10%; /* #10151D */
+    --card-foreground: 210 27% 95%;
+    --popover: 212 40% 10%;
     --popover-foreground: 210 27% 95%;
-
     --primary: 212 100% 67%; /* #58A6FF - Light Blue */
-    --primary-foreground: 212 45% 10%; /* Dark for contrast on light blue */
-
-    --secondary: 210 20% 20%; /* #2A3039 - for secondary elements */
+    --primary-foreground: 212 45% 10%;
+    --secondary: 210 20% 20%; /* #2A3039 */
     --secondary-foreground: 210 27% 95%;
-
-    --muted: 210 20% 15%; /* Darker muted tones */
-    --muted-foreground: 210 15% 60%; /* Lighter muted text */
-
+    --muted: 210 20% 15%;
+    --muted-foreground: 210 15% 60%;
     --accent: 3 100% 72%; /* #FF7B72 - Orange-Pink */
-    --accent-foreground: 212 45% 10%; /* Dark for contrast on orange-pink */
-
-    --destructive: 0 72% 51%; /* A standard red for destructive actions */
+    --accent-foreground: 212 45% 10%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-
-    --border: 210 20% 20%; /* #2A3039 */
-    --input: 210 20% 25%; /* Slightly lighter for input fields */
-    --ring: 212 100% 67%; /* Primary color for focus rings */
-    
+    --border: 210 20% 20%;
+    --input: 210 20% 25%;
+    --ring: 212 100% 67%;
     --chart-1: 212 100% 67%;
     --chart-2: 3 100% 72%;
     --chart-3: 173 58% 39%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-
     --radius: 0.5rem;
-
-    /* Sidebar specific colors - adapt to dark theme */
-    --sidebar-background: 212 45% 9%; /* Slightly different from main bg if needed */
+    --sidebar-background: 212 45% 9%;
     --sidebar-foreground: 210 27% 90%;
     --sidebar-primary: 212 100% 67%;
     --sidebar-primary-foreground: 212 45% 10%;
@@ -52,7 +40,41 @@
     --sidebar-ring: 212 100% 67%;
   }
 
-  /* No .dark class needed as it's 100% dark mode */
+  .light {
+    /* Light Theme Variables */
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 210 27% 15%; /* #1F2937 - Darker text for light bg */
+    --card: 0 0% 96%; /* #F5F5F5 - Light gray for cards */
+    --card-foreground: 210 27% 15%;
+    --popover: 0 0% 96%;
+    --popover-foreground: 210 27% 15%;
+    --primary: 212 90% 50%; /* #3B82F6 - A slightly darker blue for light theme */
+    --primary-foreground: 0 0% 100%; /* White text on blue */
+    --secondary: 0 0% 90%; /* #E5E5E5 - Light gray for secondary elements */
+    --secondary-foreground: 210 27% 25%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 210 15% 40%;
+    --accent: 3 90% 60%; /* #F97316 - A vibrant orange for light theme */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 20% 85%; /* Light gray border */
+    --input: 210 20% 90%; /* Light gray input */
+    --ring: 212 90% 50%;
+    --chart-1: 212 90% 50%;
+    --chart-2: 3 90% 60%;
+    --chart-3: 173 50% 45%;
+    --chart-4: 43 70% 60%;
+    --chart-5: 27 80% 60%;
+     --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 210 27% 20%;
+    --sidebar-primary: 212 90% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 3 90% 60%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 210 20% 85%;
+    --sidebar-ring: 212 90% 50%;
+  }
 }
 
 @layer base {
@@ -65,5 +87,32 @@
   body {
     @apply bg-background text-foreground font-mono;
     min-height: 100vh;
+  }
+}
+
+/* Terminal specific styles */
+@layer components {
+  .terminal-output::-webkit-scrollbar {
+    width: 8px;
+  }
+  .terminal-output::-webkit-scrollbar-track {
+    background: hsl(var(--card));
+  }
+  .terminal-output::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--primary) / 0.5);
+    border-radius: 4px;
+    border: 2px solid hsl(var(--card));
+  }
+  .terminal-output::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--primary));
+  }
+
+  .blinking-cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    from, to { color: transparent }
+    50% { color: hsl(var(--primary)); }
   }
 }
