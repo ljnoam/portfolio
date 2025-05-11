@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Code2 } from "lucide-react";
+import { Code2 } from "lucide-react"; // Kept for potential future use or if user changes mind
 import { ThemeToggleButton } from "@/components/theme-toggle-button";
 
 const NAV_LINKS = [
@@ -70,16 +70,15 @@ export function Navigation() {
           onMouseEnter={() => setIsLogoHovered(true)}
           onMouseLeave={() => setIsLogoHovered(false)}
         >
-          <motion.div
+          <motion.span // Changed from div to span for inline behavior
             animate={{ 
               color: isLogoHovered ? "hsl(var(--accent))" : "hsl(var(--primary))",
               scale: isLogoHovered ? 1.1 : 1,
             }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <Code2 size={28} />
-          </motion.div>
-          <span>DevCard</span>
+            Noam
+          </motion.span>
         </Link>
         <ul className="hidden md:flex items-center space-x-4 md:space-x-6">
           {NAV_LINKS.map((link) => (
@@ -106,3 +105,4 @@ export function Navigation() {
     </nav>
   );
 }
+
