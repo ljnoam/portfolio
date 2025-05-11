@@ -1,21 +1,12 @@
 import type { Metadata } from 'next';
-import { GeistSans, GeistMono } from 'next/font/google'; // Corrected import names
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 import './globals.css';
-import { Toaster } from "@/components/ui/toaster"; // Added Toaster
-
-const geistSans = GeistSans({ // Corrected variable name
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = GeistMono({ // Corrected variable name
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'DevCard | Your Name', // Updated title
-  description: 'A personal portfolio showcasing development skills and projects.', // Updated description
+  title: 'DevCard | Your Name',
+  description: 'A personal portfolio showcasing development skills and projects.',
 };
 
 export default function RootLayout({
@@ -25,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} font-mono antialiased`}>
+      <body className={`${GeistSans.variable} ${GeistMono.variable} font-mono antialiased`}>
         {children}
         <Toaster />
       </body>
