@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Code2 } from "lucide-react"; // Kept for potential future use or if user changes mind
 import { ThemeToggleButton } from "@/components/theme-toggle-button";
 
 const NAV_LINKS = [
@@ -32,7 +31,6 @@ export function Navigation() {
         const sectionElement = document.getElementById(sectionId);
         if (sectionElement) {
           const navHeight = navRef.current?.offsetHeight || parseFloat(NAVBAR_HEIGHT) * 16; 
-          // Adjust threshold to activate link slightly before section top hits navbar
           const threshold = window.innerHeight * 0.4; 
           if (sectionElement.getBoundingClientRect().top - navHeight < threshold) {
             currentSection = sectionId;
@@ -62,7 +60,7 @@ export function Navigation() {
       )}
       style={{ height: NAVBAR_HEIGHT }}
     >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between h-full">
+      <div className="container mx-auto px-6 sm:px-8 md:px-10 lg:px-12 flex items-center justify-between h-full">
         <Link 
           href="#hero" 
           className="flex items-center gap-2 text-xl font-bold text-primary hover:text-primary/80 transition-colors" 
@@ -70,7 +68,7 @@ export function Navigation() {
           onMouseEnter={() => setIsLogoHovered(true)}
           onMouseLeave={() => setIsLogoHovered(false)}
         >
-          <motion.span // Changed from div to span for inline behavior
+          <motion.span 
             animate={{ 
               color: isLogoHovered ? "hsl(var(--accent))" : "hsl(var(--primary))",
               scale: isLogoHovered ? 1.1 : 1,
@@ -105,4 +103,3 @@ export function Navigation() {
     </nav>
   );
 }
-

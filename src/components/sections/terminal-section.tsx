@@ -54,9 +54,10 @@ export function TerminalSection() {
     scrollToBottom();
   }, [outputLines, scrollToBottom]);
 
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
+  // Removed useEffect that focused inputRef on mount to prevent scroll on load.
+  // useEffect(() => {
+  //   inputRef.current?.focus();
+  // }, []);
 
   const playClearSound = () => {
     if (typeof window !== 'undefined' && window.AudioContext) {
@@ -140,13 +141,12 @@ export function TerminalSection() {
       case 'cv':
         response = [
             { id: Date.now() + 1, type: 'output', text: 'Téléchargez mon CV ici :' },
-            { id: Date.now() + 2, type: 'link', text: '  CV-Noam.pdf', href: '/CV-Noam.pdf' } // Assuming CV is in public/CV-Noam.pdf
+            { id: Date.now() + 2, type: 'link', text: '  CV-Noam.pdf', href: '/CV-Noam.pdf' } 
         ];
         break;
       case 'blog':
         response = [
             { id: Date.now() + 1, type: 'output', text: 'La section blog arrive bientôt !' },
-            // { id: Date.now() + 2, type: 'link', text: '  Visitez /blog (bientôt disponible)', href: '/blog' }
         ];
         break;
       case 'social':
@@ -154,7 +154,6 @@ export function TerminalSection() {
             { id: Date.now() + 1, type: 'output', text: 'Retrouvez-moi sur :' },
             { id: Date.now() + 2, type: 'link', text: `  GitHub: https://github.com/${GITHUB_USERNAME}`, href: `https://github.com/${GITHUB_USERNAME}` },
             { id: Date.now() + 3, type: 'link', text: '  LinkedIn: https://linkedin.com/in/noam-etsion', href: 'https://linkedin.com/in/noam-etsion' },
-            // { id: Date.now() + 4, type: 'link', text: '  Twitter: https://twitter.com/noam_dev', href: 'https://twitter.com/noam_dev' },
         ];
         break;
       case 'sudo':
@@ -226,11 +225,10 @@ export function TerminalSection() {
         }
     } else {
         gameResponse.push({ id: Date.now() + 1, type: 'error', text: "Invalid option. Please type 'a', 'b', or 'c'." });
-        // Keep game active for another try if invalid option, or end it. For now, we end.
     }
     
     setOutputLines(prev => [...prev, { id: Date.now(), type: 'input', text: `> ${input}` }, ...gameResponse]);
-    setGameState(null); // End game after one question
+    setGameState(null); 
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -246,9 +244,9 @@ export function TerminalSection() {
     if (inputValue.trim() !== commandHistory[commandHistory.length - 1]) {
       setCommandHistory(prev => [...prev, inputValue.trim()]);
     }
-    setHistoryIndex(-1); // Reset history navigation index
+    setHistoryIndex(-1); 
     setInputValue('');
-    setTimeout(() => inputRef.current?.focus(), 0); // Ensure focus happens after state updates
+    setTimeout(() => inputRef.current?.focus(), 0); 
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -256,13 +254,11 @@ export function TerminalSection() {
 
     if (e.key === 'ArrowUp') {
       e.preventDefault();
-      // Navigate backward in history (older commands)
       const newIndex = Math.min(historyIndex + 1, commandHistory.length - 1);
       setHistoryIndex(newIndex);
       setInputValue(commandHistory[commandHistory.length - 1 - newIndex] || '');
     } else if (e.key === 'ArrowDown') {
       e.preventDefault();
-      // Navigate forward in history (newer commands, or clear input)
       const newIndex = Math.max(historyIndex - 1, -1);
       setHistoryIndex(newIndex);
       setInputValue(newIndex === -1 ? '' : commandHistory[commandHistory.length - 1 - newIndex] || '');
@@ -276,8 +272,8 @@ export function TerminalSection() {
 
   const inputPromptColor = isHackerMode ? "text-[#00FF00]" : "text-primary";
   const inputClasses = cn(
-    "flex-grow bg-background focus:ring-accent text-base",
-    isHackerMode && "bg-black text-[#00FF00] placeholder:text-green-700 focus:ring-[#00FF00] border-[#00FF00]"
+    "flex-grow bg-transparent focus:ring-0 border-0 focus:outline-none text-base", // Removed ring and border for cleaner look
+    isHackerMode && "bg-black text-[#00FF00] placeholder:text-green-700 focus:ring-0 border-0"
   );
 
 
@@ -288,6 +284,7 @@ export function TerminalSection() {
       </h2>
       <motion.div
         className={terminalClasses}
+        onClick={() => inputRef.current?.focus()} // Focus on click anywhere in terminal
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
@@ -302,7 +299,10 @@ export function TerminalSection() {
                 <Link 
                   href={line.href} 
                   className={cn("hover:underline cursor-pointer", isHackerMode ? "text-cyan-400" : "text-primary")}
-                  onClick={() => setTimeout(() => inputRef.current?.focus(), 0)}
+                  onClick={(e) => {
+                    if (!line.href?.startsWith("#")) e.stopPropagation(); // Prevent terminal focus if it's an external link
+                    setTimeout(() => inputRef.current?.focus(), 0);
+                  }}
                   target={line.href.startsWith('http') || line.href.endsWith('.pdf') ? "_blank" : "_self"}
                   rel={line.href.startsWith('http') ? "noopener noreferrer" : ""}
                 >
@@ -326,11 +326,7 @@ export function TerminalSection() {
           ))}
            {gameState && gameState.active && gameState.step === 'asking' && (
              <div className={cn("whitespace-pre-wrap break-words", isHackerMode ? "text-[#00FF00]" : "text-foreground/90")}>
-                {gameState.question}
-                {Object.entries(gameState.options).map(([key, value]) => (
-                    <div key={key}>{`  ${key}) ${value}`}</div>
-                ))}
-                {'Your answer (a, b, or c):'}
+                {/* Question and options are now part of outputLines, so this block might be redundant if handled by processCommand */}
              </div>
            )}
         </div>
@@ -342,13 +338,12 @@ export function TerminalSection() {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={gameState && gameState.active ? "Your answer (a,b,c)..." : "Tapez une commande..."}
+            placeholder={gameState && gameState.active && gameState.step === 'asking' ? "Your answer (a,b,c)..." : "Tapez une commande..."}
             className={inputClasses}
             autoComplete="off"
             spellCheck="false"
-            disabled={gameState?.step === 'asking' && outputLines[outputLines.length-1]?.text === 'Your answer (a, b, or c):' && inputValue !== ''} // Minor UX to prevent double input prompt
           />
-          <Button type="submit" variant="outline" size="icon" aria-label="Submit command" className={cn(isHackerMode && "border-[#00FF00] text-[#00FF00] hover:bg-green-900")}>
+          <Button type="submit" variant="ghost" size="icon" aria-label="Submit command" className={cn("hover:bg-accent/20", isHackerMode && "border-transparent text-[#00FF00] hover:bg-green-900/50")}>
             <CornerDownLeft size={18} />
           </Button>
         </form>
@@ -356,4 +351,3 @@ export function TerminalSection() {
     </Section>
   );
 }
-
