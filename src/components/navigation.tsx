@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -61,7 +62,7 @@ export function Navigation() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out",
         "py-4",
-        isScrolled ? "bg-background/80 backdrop-blur-md shadow-lg" : "bg-transparent"
+        "bg-transparent" // Always transparent
       )}
       style={{ height: NAVBAR_HEIGHT }}
     >
