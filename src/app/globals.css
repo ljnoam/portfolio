@@ -115,4 +115,28 @@
     from, to { color: transparent }
     50% { color: hsl(var(--primary)); }
   }
+
+  /* Hacker mode styles */
+  .hacker-mode {
+    /* font-family: 'Courier New', Courier, monospace; /* Or another "hacker" font if available */
+  }
+  .hacker-mode .terminal-output::-webkit-scrollbar-track {
+    background: #000; /* Black track */
+  }
+  .hacker-mode .terminal-output::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 255, 0, 0.5); /* Semi-transparent green */
+    border: 2px solid #000; /* Black border around thumb */
+  }
+  .hacker-mode .terminal-output::-webkit-scrollbar-thumb:hover {
+    background-color: #00FF00; /* Solid green on hover */
+  }
+  .hacker-mode .blinking-cursor {
+    animation: blink-hacker 0.7s step-end infinite; /* Faster blink */
+  }
+
+  @keyframes blink-hacker {
+    from, to { color: transparent; }
+    50% { color: #00FF00; } /* Green cursor */
+  }
 }
+
