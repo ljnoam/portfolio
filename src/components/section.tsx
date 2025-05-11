@@ -16,7 +16,7 @@ export function Section({ children, className, id, ...rest }: SectionProps) {
       id={id}
       className={cn(
         "py-16 md:py-24 min-h-[calc(100vh-var(--navbar-height,4rem))]", 
-        "container mx-auto px-6 sm:px-8 md:px-10 lg:px-12", 
+        "container mx-auto px-8 sm:px-10 md:px-12 lg:px-16", 
         "scroll-mt-[var(--navbar-height,4rem)]", 
         className
       )}

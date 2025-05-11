@@ -7,7 +7,7 @@ export function Loader() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-background text-primary">
       <h1 className="text-4xl md:text-6xl font-bold">
         <Typewriter
-          words={['DevCard_']}
+          words={['</>Noam_']}
           loop={1}
           cursor
           cursorStyle='_'

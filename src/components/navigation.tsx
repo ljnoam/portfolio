@@ -56,11 +56,11 @@ export function Navigation() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out",
         "py-4",
-        "bg-transparent backdrop-blur-md" 
+        "bg-background/80 backdrop-blur-md" 
       )}
       style={{ height: NAVBAR_HEIGHT }}
     >
-      <div className="container mx-auto px-6 sm:px-8 md:px-10 lg:px-12 flex items-center justify-between h-full">
+      <div className="container mx-auto px-8 sm:px-10 md:px-12 lg:px-16 flex items-center justify-between h-full">
         <Link 
           href="#hero" 
           className="flex items-center gap-2 text-xl font-bold text-primary hover:text-primary/80 transition-colors" 

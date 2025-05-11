@@ -22,7 +22,7 @@ export default function HomePage() {
         <TerminalSection />
         <ContactSection />
       </main>
-      <footer className="py-8 px-6 sm:px-8 md:px-10 lg:px-12 text-center text-muted-foreground text-sm border-t border-border bg-card">
+      <footer className="py-8 px-8 sm:px-10 md:px-12 lg:px-16 text-center text-muted-foreground text-sm border-t border-border bg-card">
         <div className="font-mono text-left max-w-md mx-auto mb-4">
           <p className="text-primary">
             <span className="text-accent">noam@portfolio</span>:<span className="text-primary">~</span>$ whoami
