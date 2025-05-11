@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -25,61 +26,61 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <motion.div
-      whileHover={{ 
-        y: -8, 
-        scale: 1.05,
-        boxShadow: "0 20px 25px -5px rgba(var(--primary-hsl, 212 100% 67% / 0.1), 0.1), 0 8px 10px -6px rgba(var(--primary-hsl, 212 100% 67% / 0.1), 0.1)" 
-      }}
-      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+      whileHover={{ y: -5, scale: 1.03 }}
+      transition={{ type: "spring", stiffness: 260, damping: 18 }}
       className="h-full group"
     >
-      <Card className="h-full flex flex-col bg-card hover:border-primary/50 transition-colors duration-300 shadow-lg overflow-hidden relative">
-        <div className="relative w-full h-48">
+      <Card className="h-full flex flex-col bg-card hover:border-primary/60 transition-all duration-300 ease-out shadow-lg hover:shadow-primary/15 overflow-hidden">
+        <div className="relative w-full h-48 sm:h-52 overflow-hidden border-b border-border">
           <Image
             src={project.imageUrl}
             alt={project.title}
             layout="fill"
             objectFit="cover"
             data-ai-hint={project.imageHint}
-            className="transition-transform duration-300 group-hover:scale-110"
+            className="transition-transform duration-350 ease-in-out group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4">
-             <div className="flex flex-wrap gap-2 justify-center">
-              {project.stack.slice(0, 4).map((tech) => ( // Show limited stack in overlay
-                <Badge key={tech} variant="secondary" className="bg-background/70 border-accent/50 text-accent hover:bg-accent/20 text-xs">
+        </div>
+        
+        <CardHeader className="p-4 pb-2">
+          <CardTitle className="text-lg font-semibold text-primary group-hover:text-primary/90 transition-colors line-clamp-2">
+            {project.title}
+          </CardTitle>
+        </CardHeader>
+
+        <CardContent className="p-4 pt-2 flex-grow flex flex-col">
+          <CardDescription className="text-sm text-foreground/70 mb-4 leading-relaxed line-clamp-3">
+            {project.description}
+          </CardDescription>
+          
+          <div className="mt-auto">
+            <h4 className="text-xs font-medium text-muted-foreground mb-2">Technologies:</h4>
+            <div className="flex flex-wrap gap-1.5">
+              {project.stack.map((tech) => (
+                <Badge
+                  key={tech}
+                  variant="outline"
+                  className="text-xs border-accent/40 text-accent/90 bg-accent/10 hover:bg-accent/20 px-2 py-0.5"
+                >
                   {tech}
                 </Badge>
               ))}
             </div>
           </div>
-        </div>
-        <CardHeader>
-          <CardTitle className="text-2xl text-primary">{project.title}</CardTitle>
-          <CardDescription className="text-foreground/80 pt-1 h-20 overflow-hidden text-ellipsis"> {/* Fixed height for description */}
-            {project.description}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex-grow">
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.stack.map((tech) => (
-              <Badge key={tech} variant="secondary" className="bg-card border-accent/30 text-accent hover:bg-accent/10">
-                {tech}
-              </Badge>
-            ))}
-          </div>
         </CardContent>
-        <CardFooter className="flex justify-start gap-3 mt-auto pt-4 border-t border-border">
+
+        <CardFooter className="p-4 pt-3 flex justify-start gap-2 border-t border-border/70">
           {project.githubLink && (
-            <Button asChild variant="outline" size="sm">
+            <Button asChild variant="ghost" size="sm" className="text-foreground/80 hover:text-primary hover:bg-primary/10">
               <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-4 w-4" /> GitHub
+                <Github className="mr-1.5 h-3.5 w-3.5" /> GitHub
               </Link>
             </Button>
           )}
           {project.demoLink && (
-            <Button asChild variant="default" size="sm">
+            <Button asChild variant="outline" size="sm" className="hover:border-primary/70 hover:text-primary">
               <Link href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="mr-2 h-4 w-4" /> Démo
+                <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> Démo
               </Link>
             </Button>
           )}
@@ -88,3 +89,4 @@ export function ProjectCard({ project }: ProjectCardProps) {
     </motion.div>
   );
 }
+

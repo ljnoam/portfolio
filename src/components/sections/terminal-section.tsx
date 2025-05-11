@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
@@ -86,6 +87,7 @@ export function TerminalSection() {
     }
     setHistoryIndex(-1); // Reset history index
     setInputValue('');
+    inputRef.current?.focus(); // Re-focus the input to prevent page scroll
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -156,3 +158,4 @@ export function TerminalSection() {
     </Section>
   );
 }
+
