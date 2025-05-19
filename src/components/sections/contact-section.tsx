@@ -12,7 +12,7 @@ export function ContactSection() {
       </p>
       <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-12">
         <Button asChild size="lg" variant="default">
-          <a href="mailto:your.email@example.com"> {/* Replace with your email */}
+          <a href="mailto:ljnoam@gmail.com"> {/* Replace with your email */}
             <Mail className="mr-2 h-5 w-5" /> Envoyer un email
           </a>
         </Button>
