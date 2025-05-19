@@ -33,10 +33,10 @@ export default function HomePage() {
           </p>
         </div>
         <div className="flex justify-center items-center space-x-4 mb-4">
-          <Link href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"> {/* Replace yourusername */}
+          <Link href="https://github.com/ljnoam" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile"> {/* Replace yourusername */}
             <Github className="h-6 w-6 text-foreground/70 hover:text-primary transition-colors" />
           </Link>
-          <Link href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"> {/* Replace yourusername */}
+          <Link href="https://www.linkedin.com/in/noam-leclapart-jublot/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"> {/* Replace yourusername */}
             <Linkedin className="h-6 w-6 text-foreground/70 hover:text-primary transition-colors" />
           </Link>
         </div>

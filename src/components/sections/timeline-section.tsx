@@ -18,31 +18,17 @@ interface TimelineEvent {
 const timelineEvents: TimelineEvent[] = [
   {
     year: "2023 - Présent",
-    title: "Master Informatique",
-    description: "Approfondissement en développement logiciel, intelligence artificielle et gestion de projet.",
+    title: "Bachelor en informatique",
+    description: "Formation en alternance à l'ECE Paris, spécialisée en Data Science et IA.",
     icon: GraduationCap,
     category: "education",
   },
   {
-    year: "2022",
+    year: "2023",
     title: "Auto-formation Next.js & TypeScript",
     description: "Développement de projets personnels pour maîtriser Next.js, TypeScript et Tailwind CSS.",
     icon: Lightbulb,
     category: "learning",
-  },
-  {
-    year: "2021 - 2023",
-    title: "Licence Informatique",
-    description: "Bases solides en algorithmique, structures de données, bases de données et développement web.",
-    icon: GraduationCap,
-    category: "education",
-  },
-  {
-    year: "Été 2022",
-    title: "Stage Développeur Web - Alpha Tech",
-    description: "Participation au développement d'une application React pour la gestion client, intégration d'API.",
-    icon: Briefcase,
-    category: "work",
   },
   {
     year: "2020",

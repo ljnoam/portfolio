@@ -17,16 +17,16 @@ export function ContactSection() {
           </a>
         </Button>
         <Button asChild size="lg" variant="outline">
-          <Link href="/cv.pdf" target="_blank" download="YourName_CV.pdf"> {/* Ensure cv.pdf is in /public */}
+          <Link href="/cv.pdf" target="_blank" download="cv.pdf"> {/* Ensure cv.pdf is in /public */}
             <Download className="mr-2 h-5 w-5" /> Télécharger mon CV
           </Link>
         </Button>
       </div>
       <div className="flex justify-center items-center space-x-6">
-        <Link href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+        <Link href="https://github.com/ljnoam" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
           <Github className="h-8 w-8 text-foreground/70 hover:text-primary transition-colors" />
         </Link>
-        <Link href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+        <Link href="https://www.linkedin.com/in/noam-leclapart-jublot/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
           <Linkedin className="h-8 w-8 text-foreground/70 hover:text-primary transition-colors" />
         </Link>
       </div>

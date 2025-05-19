@@ -3,43 +3,40 @@ import { ProjectCard, type Project } from "@/components/project-card";
 
 const projectsData: Project[] = [
   {
-    title: "Portfolio Avancé",
-    description: "Ce site web ! Un portfolio personnel statique, moderne et réactif construit avec Next.js et Tailwind CSS.",
-    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    githubLink: "https://github.com/yourusername/devcard-portfolio", // Replace with your actual link
-    imageUrl: "https://picsum.photos/seed/portfolio/400/300",
-    imageHint: "website user interface"
+    title: "Traveloo – Planner de Vacances en Ligne",
+    description:
+      "Application web full-stack pour planifier, organiser et partager ses vacances. Interface moderne en React, avec un backend Python pour la gestion des utilisateurs, destinations et itinéraires.",
+    stack: ["React", "Tailwind CSS", "Python", "REST API", "Full Stack"],
+    demoLink: "https://traveloo.fr",
+    imageUrl: "/travel_planner.png",
+    imageHint: "interface de planification de voyage",
   },
   {
-    title: "Analyse de Données E-commerce",
-    description: "Un pipeline d'analyse de données pour un site e-commerce, identifiant les tendances de vente et les comportements clients.",
-    stack: ["Python", "Pandas", "Matplotlib", "Jupyter Notebook"],
-    githubLink: "https://github.com/yourusername/ecommerce-analysis", // Replace
-    imageUrl: "https://picsum.photos/seed/dataviz/400/300",
-    imageHint: "data visualization"
+    title: "Scraper Produits Decathlon",
+    description:
+      "Un scraper web en Python qui collecte automatiquement les données de produits sur le site Decathlon (nom, prix, liens...)!",
+    stack: ["Python", "Selenium", "Pandas", "Web Scraping"],
+    githubLink: "https://github.com/ljnoam/decathlon_scraper",
+    imageUrl: "/decathlon.png",
+    imageHint: "code terminal et produits en ligne",
   },
   {
-    title: "Application Web de Gestion de Tâches",
-    description: "Une application full-stack permettant de créer, suivre et gérer des tâches en équipe.",
-    stack: ["React", "Node.js", "Express", "MongoDB", "REST API"],
-    demoLink: "#", // Replace with actual demo link if available
-    imageUrl: "https://picsum.photos/seed/taskapp/400/300",
-    imageHint: "application interface"
-  },
-  {
-    title: "Chatbot Intelligent",
-    description: "Un chatbot basé sur des techniques de NLP pour répondre aux questions fréquentes des utilisateurs.",
-    stack: ["Python", "NLTK", "Scikit-learn", "Flask"],
-    githubLink: "https://github.com/yourusername/smart-chatbot", // Replace
-    imageUrl: "https://picsum.photos/seed/chatbot/400/300",
-    imageHint: "artificial intelligence"
+    title: "Réservation de Billets TGV",
+    description:
+      "Application console en C++ pour réserver des billets de TGV avec gestion des trains, horaires, types de billets, annulations, ...",
+    stack: ["C++", "CMake", "Programmation Orientée Objet", "Fichiers texte"],
+    githubLink: "https://github.com/ljnoam/projet_tgv",
+    imageUrl: "tgv.png",
+    imageHint: "terminal application",
   },
 ];
 
 export function ProjectsSection() {
   return (
     <Section id="projects">
-      <h2 className="text-4xl font-bold mb-12 text-center text-primary">Mes Projets</h2>
+      <h2 className="text-4xl font-bold mb-12 text-center text-primary">
+        Mes principaux projets
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projectsData.map((project) => (
           <ProjectCard key={project.title} project={project} />

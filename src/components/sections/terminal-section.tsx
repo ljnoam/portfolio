@@ -33,7 +33,7 @@ const GITHUB_USERNAME = "noam"; // Replace if needed
 export function TerminalSection() {
   const [inputValue, setInputValue] = useState('');
   const [outputLines, setOutputLines] = useState<OutputLine[]>([
-    { id: Date.now(), type: 'output', text: 'Welcome to DevCard Interactive Terminal!' },
+    { id: Date.now(), type: 'output', text: 'Welcome to Noam Interactive Terminal!' },
     { id: Date.now() + 1, type: 'output', text: "Type 'help' to see available commands." },
   ]);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
